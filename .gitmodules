@@ -31,3 +31,6 @@
 [submodule "uvmodules/uvlogplus"]
 	path = uvmodules/uvlogplus
 	url = https://gitee.com/ztwlla/uvlogplus.git
+[submodule "thirdparty/lua"]
+	path = thirdparty/lua
+	url = https://gitee.com/ztwlla/lua.git

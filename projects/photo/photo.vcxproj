@@ -11,20 +11,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="uvNetPlusFtp.cpp" />
+    <ClCompile Include="exif.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\uvmodules\uvlogplus\uvlogplus.vcxproj">
-      <Project>{053c306c-2522-47df-a4ca-4910086670c8}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\uvmodules\uvnetplus\uvnetplus.vcxproj">
-      <Project>{f619c109-3255-4794-ab1c-218a94e7f2bc}</Project>
-    </ProjectReference>
+    <ClInclude Include="exif.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{0ECBDA41-B948-4D1B-BE89-9DB31B20608B}</ProjectGuid>
+    <ProjectGuid>{DE2445BF-2F75-4743-BBBD-60730024E9A4}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>uvHttpClient</RootNamespace>
+    <RootNamespace>KosaHost</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -49,10 +45,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)out\$(Platform)_$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)out\Temp\$(Platform)_$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)out\$(Platform)_$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)out\Temp\$(Platform)_$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
@@ -62,15 +60,17 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32_LEAN_AND_MEAN;WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>../thirdParty/libuv/include;../common/util;../common/utilc;../uvmodules/uvnetplus;../uvmodules/uvlogplus;../;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../common/utilc;../../common/util;../../common/ludb;../../uvmodules/uvnetplus;../../uvmodules/uvlogplus;../../;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>ws2_32.lib;userenv.lib;psapi.lib;iphlpapi.lib;libuv.lib;cjson.lib;pugixml.lib;mbedtls.lib;utilc.lib;util.lib;uvlogplus.lib;uvnetplus.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Dnsapi.lib;Iphlpapi.lib;Ws2_32.lib;winmm.lib;wldap32.lib;userenv.lib;psapi.lib;cjson.lib;pugixml.lib;libuv.lib;libcstl.lib;lua.lib;sqlite3.lib;Util.lib;utilc.lib;ludb.lib;uvnetplus.lib;uvlogplus.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -81,9 +81,9 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32_LEAN_AND_MEAN;WIN32;NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>../thirdParty/libuv/include;../common/util;../common/utilc;../uvmodules/uvnetplus;../uvmodules/uvlogplus;../;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../common/utilc;../../common/util;../../common/ludb;../../uvmodules/uvnetplus;../../uvmodules/uvlogplus;../../;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -91,7 +91,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>ws2_32.lib;userenv.lib;psapi.lib;iphlpapi.lib;libuv.lib;cjson.lib;pugixml.lib;mbedtls.lib;utilc.lib;util.lib;uvlogplus.lib;uvnetplus.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Dnsapi.lib;Iphlpapi.lib;Ws2_32.lib;winmm.lib;wldap32.lib;userenv.lib;psapi.lib;cjson.lib;pugixml.lib;libuv.lib;libcstl.lib;lua.lib;sqlite3.lib;Util.lib;utilc.lib;ludb.lib;uvnetplus.lib;uvlogplus.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
