@@ -17,9 +17,15 @@
     <ClCompile Include="exif.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="photo.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="exif.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="photo.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
